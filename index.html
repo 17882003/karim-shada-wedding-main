@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karim &amp; Shada — Stage El Nile, 7 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2a1210;
+    --ivory:#f8efe9;
+    --emerald:#510400;
+    --emerald-deep:#340300;
+    --gold:#c6a15b;
+    --gold-soft:#e4d3a8;
+    --blush:#dcb9ae;
+    --line: rgba(198,161,91,0.35);
+    --maxw: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html, body{max-width:100%; overflow-x:hidden;}
+  img, video, svg{max-width:100%;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+    margin:0;
+    color:var(--emerald-deep);
+  }
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px; position:relative;}
+
+  /* Motion */
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.9s ease, transform 0.9s ease;}
+    .reveal.in{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none;}
+  }
+
+  /* Floral sprig (line-art, reused throughout) */
+  .floral{position:absolute; color:var(--gold); opacity:0.55; pointer-events:none;}
+  .floral svg{width:100%; height:100%; display:block;}
+  .sprig-center{
+    width:34px; height:56px; margin:0 auto 14px; color:var(--gold); opacity:0.8; position:relative;
+  }
+  .sprig-center svg{width:100%; height:100%; display:block;}
+
+  /* Nav */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 40px;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.nav.scrolled{
+    background:rgba(248,239,233,0.92);
+    backdrop-filter:blur(8px);
+    padding:14px 40px;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    font-style:italic;
+    letter-spacing:0.06em;
+    color:var(--ivory);
+    transition:color .4s ease;
+  }
+  header.nav.scrolled .brand{color:var(--emerald-deep);}
+  nav.links{display:flex; gap:34px; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;}
+  nav.links a{color:var(--ivory); text-decoration:none; opacity:0.88; transition:opacity .3s, color .4s;}
+  header.nav.scrolled nav.links a{color:var(--emerald-deep);}
+  nav.links a:hover, nav.links a:focus-visible{opacity:1; outline:none; border-bottom:1px solid var(--gold);}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(198,161,91,0.16), transparent 55%),
+      linear-gradient(180deg, var(--emerald-deep) 0%, var(--emerald) 60%, #2c0300 100%);
+    color:var(--ivory);
+    overflow:hidden;
+    padding:140px 24px 90px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:18px;
+    border:1px solid rgba(230,211,168,0.35);
+    pointer-events:none;
+  }
+  .hero .floral{width:120px; height:200px;}
+  .hero .floral.fl-left{bottom:-10px; left:2%; transform:rotate(-8deg);}
+  .hero .floral.fl-right{bottom:-10px; right:2%; transform:rotate(188deg);}
+
+  .portrait{
+    width:300px; height:300px; margin:0 auto 0;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    padding:6px;
+    position:relative;
+  }
+  .portrait::before, .portrait::after{
+    content:"";
+    position:absolute; inset:-9px;
+    border:1px solid rgba(198,161,91,0.4);
+    border-radius:50%;
+  }
+  .portrait::after{inset:-18px; border-color:rgba(198,161,91,0.22);}
+  .portrait img{
+    width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:center 15%;
+  }
+
+  /* Audio play ring — calm rotation, gentle pulse. Pulled up so its ring
+     overlaps the portrait's outer ring and the two read as one motif. */
+  .audio-toggle{
+    width:92px; height:92px; margin:-22px auto 22px;
+    position:relative;
+    background:none; border:none; padding:0; cursor:pointer;
+  }
+  .audio-ring{
+    width:100%; height:100%;
+    color:var(--gold-soft);
+    transition:opacity 1.2s ease;
+    opacity:0.65;
+  }
+  .audio-toggle.playing .audio-ring{
+    opacity:1;
+    animation: slow-spin 26s linear infinite;
+  }
+  @keyframes slow-spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+  }
+  .audio-icon{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:16px; height:16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .audio-icon svg{width:100%; height:100%; fill:var(--gold-soft);}
+  .audio-icon .pause-ic{display:none;}
+  .audio-toggle.playing .play-ic{display:none;}
+  .audio-toggle.playing .pause-ic{display:flex;}
+  .audio-label{
+    display:block; margin:0 auto 30px; text-align:center;
+    font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(248,239,233,0.5);
+    margin-top:-16px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .audio-toggle.playing .audio-ring{animation:none;}
+  }
+
+  .hero .eyebrow{color:var(--gold-soft); margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 6.4rem);
+    line-height:0.98;
+    font-weight:400;
+  }
+  .hero .amp{display:block; font-size:0.5em; color:var(--gold); margin:6px 0;}
+  .hero .sub{
+    margin-top:26px;
+    font-size:1.02rem;
+    letter-spacing:0.06em;
+    color:rgba(248,239,233,0.85);
+  }
+  .hero .sub strong{color:var(--gold-soft); font-weight:500;}
+
+  .countdown{
+    display:flex; gap:28px; justify-content:center; margin-top:52px; flex-wrap:wrap;
+  }
+  .countdown .cell{min-width:78px;}
+  .countdown .num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.6rem; color:var(--gold-soft); line-height:1;
+  }
+  .countdown .lbl{
+    font-size:0.65rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(248,239,233,0.6); margin-top:8px;
+  }
+  .countdown .div{color:var(--gold); font-size:1.6rem; align-self:flex-start; margin-top:4px;}
+
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(248,239,233,0.55);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-cue .stem{width:1px; height:34px; background:linear-gradient(var(--gold), transparent);}
+
+  /* Section shell */
+  section{padding:120px 0; position:relative;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 64px; position:relative;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(2.1rem, 4vw, 3rem); font-weight:400;}
+  .rule{
+    width:64px; height:1px; background:var(--gold); margin:22px auto 0;
+  }
+
+  /* Story */
+  .story{background:var(--ivory);}
+  .story-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .story-art{
+    aspect-ratio:4/5;
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+    background:var(--emerald-deep);
+  }
+  .story-art img{width:100%; height:100%; object-fit:cover;}
+  .story-text p{margin:0 0 18px; font-size:1.02rem; color:#4a332f;}
+  .story-text p:last-child{margin-bottom:0;}
+
+  /* Timeline */
+  .timeline{background:var(--emerald-deep); color:var(--ivory);}
+  .timeline .section-head h2, .timeline .eyebrow{color:var(--ivory);}
+  .timeline .eyebrow{color:var(--gold-soft);}
+  .tl-list{
+    max-width:640px; margin:0 auto;
+    border-left:1px solid rgba(230,211,168,0.28);
+    padding-left:0;
+  }
+  .tl-item{
+    display:grid; grid-template-columns:120px 1fr; gap:28px;
+    padding:26px 0 26px 32px;
+    position:relative;
+    border-bottom:1px solid rgba(230,211,168,0.15);
+  }
+  .tl-item:last-child{border-bottom:none;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-5px; top:34px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--gold);
+  }
+  .tl-time{font-family:'Cormorant Garamond', serif; font-size:1.3rem; color:var(--gold-soft);}
+  .tl-what h3{font-size:1.15rem; font-weight:500; color:var(--ivory); margin-bottom:4px;}
+  .tl-what p{margin:0; font-size:0.92rem; color:rgba(248,239,233,0.68);}
+
+  /* Venue — one bordered panel: a media strip (video + photo) beside the
+     details card, echoing the reference layout the couple picked. */
+  .venue{background:var(--ivory);}
+  .venue-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:0;
+    border:1px solid var(--line);
+  }
+  .venue-media{
+    display:flex;
+    min-height:420px;
+    position:relative;
+    overflow:hidden;
+    background:var(--emerald-deep);
+  }
+  .venue-media .venue-vid{
+    flex:0 0 36%;
+    position:relative;
+    overflow:hidden;
+  }
+  .venue-media .venue-vid video{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  }
+  .venue-media .venue-photo{
+    flex:1 1 auto;
+    position:relative;
+    overflow:hidden;
+  }
+  .venue-media .venue-photo img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .venue-media .venue-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(42,18,16,0.05), rgba(42,18,16,0.4));
+  }
+  .venue-media .tag{
+    position:absolute; bottom:16px; left:calc(36% + 16px); z-index:2;
+    background:rgba(42,18,16,0.72); color:var(--gold-soft);
+    font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+    padding:8px 14px;
+  }
+  .venue-info{padding:52px 44px; background:#fbf3ee;}
+  .venue-info h3{font-size:1.7rem; margin-bottom:6px;}
+  .venue-info .addr{color:#6b4f49; font-size:0.95rem; margin-bottom:26px;}
+  .venue-info dl{display:grid; grid-template-columns:auto 1fr; gap:10px 18px; font-size:0.92rem;}
+  .venue-info dt{color:var(--gold); text-transform:uppercase; font-size:0.68rem; letter-spacing:0.16em; padding-top:2px;}
+  .venue-info dd{margin:0; color:#4a332f;}
+  .map-btn{
+    display:inline-block; margin-top:28px;
+    border:1px solid var(--emerald-deep); color:var(--emerald-deep);
+    text-decoration:none; padding:12px 22px;
+    font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
+    transition:background .3s ease, color .3s ease;
+  }
+  .map-btn:hover, .map-btn:focus-visible{background:var(--emerald-deep); color:var(--ivory); outline:none;}
+
+  /* Gallery */
+  .gallery{background:var(--emerald);}
+  .gallery .section-head h2, .gallery .eyebrow{color:var(--ivory);}
+  .gallery .eyebrow{color:var(--gold-soft);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:150px;
+    gap:6px;
+  }
+  .gallery-grid .g{
+    background:linear-gradient(150deg, var(--gold-soft), var(--blush));
+    opacity:0.9;
+    position:relative;
+    overflow:hidden;
+  }
+  .gallery-grid .g img{width:100%; height:100%; object-fit:cover;}
+  .gallery-grid .g:nth-child(3n){background:linear-gradient(150deg, var(--blush), var(--emerald-deep));}
+  .gallery-grid .g:nth-child(3n+1){background:linear-gradient(150deg, var(--gold), var(--gold-soft));}
+  .gallery-grid .g:nth-child(1), .gallery-grid .g:nth-child(6){grid-row:span 2;}
+
+  /* Footer */
+  footer{
+    background:var(--emerald-deep); color:rgba(248,239,233,0.75);
+    padding:64px 0 36px; text-align:center;
+  }
+  footer .brand{color:var(--ivory); margin-bottom:14px; display:block;}
+  footer .foot-links{display:flex; justify-content:center; gap:26px; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:26px;}
+  footer .foot-links a{text-decoration:none; opacity:0.85;}
+  footer .foot-links a:hover{opacity:1;}
+  footer .fine{font-size:0.74rem; color:rgba(248,239,233,0.45);}
+
+  /* Preloader — holds the site until video, audio and images are ready,
+     so nothing pops in or hangs mid-scroll for the guest. */
+  #siteLoader{
+    position:fixed; inset:0; z-index:999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;
+    background:linear-gradient(180deg, var(--emerald-deep) 0%, var(--emerald) 60%, #2c0300 100%);
+    transition:opacity .6s ease;
+  }
+  #siteLoader.hidden{opacity:0; pointer-events:none;}
+  .loader-mark{
+    width:40px; height:64px; color:var(--gold-soft); opacity:0.9;
+    animation:loader-breathe 1.8s ease-in-out infinite;
+  }
+  .loader-mark svg{width:100%; height:100%;}
+  @keyframes loader-breathe{
+    0%, 100%{opacity:0.45; transform:scale(0.94);}
+    50%{opacity:1; transform:scale(1.04);}
+  }
+  .loader-label{
+    font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(248,239,233,0.6);
+    transition:opacity .4s ease;
+  }
+  .loader-mark{transition:opacity .4s ease;}
+  .loader-mark.fade-out, .loader-label.fade-out{opacity:0; position:absolute;}
+  .loader-start{
+    background:none; cursor:pointer;
+    border:1px solid var(--gold-soft); color:var(--gold-soft);
+    padding:16px 44px;
+    font-family:'Jost', sans-serif; font-size:0.74rem; letter-spacing:0.28em; text-transform:uppercase;
+    opacity:0; transform:translateY(10px);
+    transition:opacity .5s ease, transform .5s ease, background .3s ease, color .3s ease;
+    pointer-events:none;
+  }
+  .loader-start.shown{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .loader-start:hover, .loader-start:focus-visible{background:var(--gold-soft); color:var(--emerald-deep); outline:none;}
+  body.loading{overflow:hidden; height:100vh;}
+
+  @media (max-width: 860px){
+    .story-grid, .venue-grid{grid-template-columns:1fr;}
+    .venue-media{min-height:auto; flex-direction:column;}
+    .venue-media .venue-vid{flex-basis:200px;}
+    .venue-media .venue-photo{height:260px;}
+    .venue-media .tag{left:16px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    nav.links{display:none;}
+    .hero .floral{width:70px; height:120px;}
+    .portrait{width:230px; height:230px;}
+    .audio-toggle{width:76px; height:76px; margin:-16px auto 20px;}
+  }
+</style>
+</head>
+<body class="loading">
+
+<div id="siteLoader" aria-hidden="true">
+  <div class="loader-mark" id="loaderMark"><svg viewBox="0 0 120 200"><use href="#sprig"/></svg></div>
+  <span class="loader-label" id="loaderLabel">Loading</span>
+  <button class="loader-start" id="loaderStart" type="button">Start</button>
+</div>
+
+<!-- Reusable floral line-art symbol -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="sprig" viewBox="0 0 120 200">
+    <path d="M60 195 C 54 150, 66 118, 60 88 C 54 58, 66 36, 60 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M60 150 C 38 142, 22 122, 27 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M60 150 C 82 142, 98 122, 93 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M60 118 C 44 112, 33 96, 37 80" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M60 118 C 76 112, 87 96, 83 80" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <circle cx="60" cy="52" r="16" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="60" cy="52" r="8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <circle cx="60" cy="52" r="2.4" fill="currentColor"/>
+    <ellipse cx="30" cy="96" rx="11" ry="5.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-32 30 96)"/>
+    <ellipse cx="90" cy="96" rx="11" ry="5.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(32 90 96)"/>
+    <ellipse cx="35" cy="130" rx="9" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-40 35 130)"/>
+    <ellipse cx="85" cy="130" rx="9" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(40 85 130)"/>
+  </symbol>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="brand">My Day</div>
+  <nav class="links">
+    <a href="#story">Our Story</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#venue">Venue</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="floral fl-left"><svg><use href="#sprig"/></svg></div>
+  <div class="floral fl-right"><svg><use href="#sprig"/></svg></div>
+  <div>
+    <div class="portrait"><img src="assets/couple-portrait.jpg" alt="Karim and Shada"></div>
+
+    <button class="audio-toggle" id="audioToggle" type="button" aria-label="Play wedding music" aria-pressed="false">
+      <svg class="audio-ring" id="audioRingSvg" viewBox="0 0 200 200" aria-hidden="true"></svg>
+      <span class="audio-icon">
+        <svg class="play-ic" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="pause-ic" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </span>
+    </button>
+    <span class="audio-label">Play our song</span>
+    <audio id="bgAudio" src="assets/wedding-music.m4a" loop preload="auto"></audio>
+
+    <p class="eyebrow">Together with their families</p>
+    <h1>Karim<span class="amp">&amp;</span>Shada</h1>
+    <p class="sub">request the honour of your presence · <strong>Friday, 7 August 2026</strong> · 7:00 pm · Stage El Nile, Cairo</p>
+
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="cell"><div class="num" id="cd-days">00</div><div class="lbl">Days</div></div>
+      <div class="div">·</div>
+      <div class="cell"><div class="num" id="cd-hours">00</div><div class="lbl">Hours</div></div>
+      <div class="div">·</div>
+      <div class="cell"><div class="num" id="cd-mins">00</div><div class="lbl">Minutes</div></div>
+      <div class="div">·</div>
+      <div class="cell"><div class="num" id="cd-secs">00</div><div class="lbl">Seconds</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="stem"></span></div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="sprig-center"><svg><use href="#sprig"/></svg></div>
+      <p class="eyebrow">Our Story</p>
+      <h2>A day we've long imagined</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="story-grid">
+      <div class="story-art reveal"><img src="assets/couple-portrait.jpg" alt="Karim and Shada"></div>
+      <div class="story-text reveal">
+        <p>Karim and Shada are delighted to welcome their family and closest friends to celebrate the beginning of their life together.</p>
+        <p>What started as quiet conversations and shared plans has grown into a wedding day we can hardly wait to share with the people who mean the most to us.</p>
+        <p>We're gathering at Stage El Nile this August, and it wouldn't be the same without you there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="schedule">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="sprig-center"><svg><use href="#sprig"/></svg></div>
+      <p class="eyebrow">The Day</p>
+      <h2>Order of Events</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="tl-list reveal">
+      <div class="tl-item">
+        <div class="tl-time">6:30 pm</div>
+        <div class="tl-what"><h3>Guest Arrival</h3><p>Welcome as our guests arrive at Stage El Nile</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7:00 pm</div>
+        <div class="tl-what"><h3>Evening Begins</h3><p>The celebration opens</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7:30 pm</div>
+        <div class="tl-what"><h3>Katb El Kitab</h3><p>The marriage contract signing ceremony</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:00 pm</div>
+        <div class="tl-what"><h3>Photos &amp; Memories</h3><p>Pictures with family and friends</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00 pm</div>
+        <div class="tl-what"><h3>Zaffa</h3><p>The wedding procession</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="venue" id="venue">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="sprig-center"><svg><use href="#sprig"/></svg></div>
+      <p class="eyebrow">Venue</p>
+      <h2>Find Your Way</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="venue-grid reveal">
+      <div class="venue-media">
+        <div class="venue-vid">
+          <video id="venueVideo" autoplay muted loop playsinline preload="auto">
+            <source src="assets/venue-video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="venue-photo">
+          <img src="assets/venue.jpg" alt="Stage El Nile venue">
+        </div>
+        <span class="tag">Stage El Nile, Cairo</span>
+      </div>
+      <div class="venue-info">
+        <h3>Stage El Nile</h3>
+        <p class="addr">Cairo, Egypt</p>
+        <dl>
+          <dt>Date</dt><dd>Friday, 7 August 2026</dd>
+          <dt>Time</dt><dd>Guests arrive from 6:30 pm</dd>
+          <dt>Attire</dt><dd>Garden formal — the lawn favours flat heels</dd>
+        </dl>
+        <a class="map-btn" href="https://maps.app.goo.gl/Cu2xZ32iPUV692DKA?g_st=aw" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="sprig-center"><svg><use href="#sprig"/></svg></div>
+      <p class="eyebrow">Gallery</p>
+      <h2>Moments Along the Way</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g"><img src="assets/couple-portrait.jpg" alt="Karim and Shada"></div>
+      <div class="g"><img src="assets/gallery-rings.jpg" alt="Karim and Shada's rings"></div>
+      <div class="g"><img src="assets/gallery-bouquet.jpg" alt="Bridal bouquet"></div>
+      <div class="g"><img src="assets/gallery-sweet-moment.jpg" alt="A sweet moment together"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sprig-center" style="color:var(--gold-soft);"><svg><use href="#sprig"/></svg></div>
+    <span class="brand display">Karim &amp; Shada</span>
+    <div class="foot-links">
+      <a href="#story">Our Story</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#venue">Venue</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <p class="fine">Friday, 7 August 2026 · 7:00 pm · Stage El Nile, Cairo, Egypt</p>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Reveal-on-scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Countdown to wedding date
+  const weddingDate = new Date('2026-08-07T19:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    let diff = Math.max(0, weddingDate - now);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Build the radial audio ring (calm, gentle look — varied bar lengths for texture)
+  (function buildAudioRing(){
+    const svg = document.getElementById('audioRingSvg');
+    const ns = 'http://www.w3.org/2000/svg';
+    const cx = 100, cy = 100, count = 84, inner = 70;
+    for (let i = 0; i < count; i++){
+      const angle = (i / count) * Math.PI * 2;
+      const wobble = 10 + 8 * Math.abs(Math.sin(i * 0.35)) + 4 * Math.abs(Math.cos(i * 0.9));
+      const outer = inner + wobble;
+      const x1 = cx + inner * Math.cos(angle);
+      const y1 = cy + inner * Math.sin(angle);
+      const x2 = cx + outer * Math.cos(angle);
+      const y2 = cy + outer * Math.sin(angle);
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', x1.toFixed(2));
+      line.setAttribute('y1', y1.toFixed(2));
+      line.setAttribute('x2', x2.toFixed(2));
+      line.setAttribute('y2', y2.toFixed(2));
+      line.setAttribute('stroke', 'currentColor');
+      line.setAttribute('stroke-width', '2.4');
+      line.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(line);
+    }
+  })();
+
+  // Audio play/pause toggle
+  const audioBtn = document.getElementById('audioToggle');
+  const bgAudio = document.getElementById('bgAudio');
+
+  function setAudioUI(isPlaying) {
+    audioBtn.classList.toggle('playing', isPlaying);
+    audioBtn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+    audioBtn.setAttribute('aria-label', isPlaying ? 'Pause wedding music' : 'Play wedding music');
+  }
+
+  audioBtn.addEventListener('click', () => {
+    if (bgAudio.paused) {
+      bgAudio.play().catch(() => {});
+      setAudioUI(true);
+    } else {
+      bgAudio.pause();
+      setAudioUI(false);
+    }
+  });
+
+  // Preloader — hold the site behind a loading screen until the hero photo,
+  // the venue video and the music are actually ready to play. Once ready, swap
+  // the spinner for a "Start" button: clicking it is a real user gesture, so
+  // the browser allows the music to begin playing at that exact moment instead
+  // of being silently blocked by autoplay-with-sound restrictions.
+  (function preloader() {
+    const loader = document.getElementById('siteLoader');
+    const loaderMark = document.getElementById('loaderMark');
+    const loaderLabel = document.getElementById('loaderLabel');
+    const startBtn = document.getElementById('loaderStart');
+    const venueVideo = document.getElementById('venueVideo');
+    const readyTasks = [];
+
+    readyTasks.push(new Promise(resolve => {
+      if (document.readyState === 'complete') return resolve();
+      window.addEventListener('load', resolve, { once: true });
+    }));
+
+    readyTasks.push(new Promise(resolve => {
+      if (venueVideo.readyState >= 3) return resolve(); // HAVE_FUTURE_DATA
+      venueVideo.addEventListener('canplaythrough', resolve, { once: true });
+      venueVideo.addEventListener('error', resolve, { once: true });
+      setTimeout(resolve, 8000); // don't let a slow connection hang the site forever
+    }));
+
+    readyTasks.push(new Promise(resolve => {
+      if (bgAudio.readyState >= 3) return resolve();
+      bgAudio.addEventListener('canplaythrough', resolve, { once: true });
+      bgAudio.addEventListener('error', resolve, { once: true });
+      setTimeout(resolve, 8000);
+    }));
+
+    Promise.all(readyTasks).then(() => {
+      loaderMark.classList.add('fade-out');
+      loaderLabel.classList.add('fade-out');
+      startBtn.classList.add('shown');
+      startBtn.focus();
+    });
+
+    startBtn.addEventListener('click', () => {
+      bgAudio.play().then(() => setAudioUI(true)).catch(() => setAudioUI(false));
+      document.body.classList.remove('loading');
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 700);
+    });
+  })();
+</script>
+
+</body>
+</html>
